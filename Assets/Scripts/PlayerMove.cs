@@ -9,6 +9,11 @@ public class PlayerMove : MonoBehaviour
     private Vector3 fingerPosition;
     [SerializeField] private Camera mainCamera;
     private Vector3 lookAtDirection;
+
+    public GameObject bulletObj;
+    public Transform bulletSpawnPoint;
+    public float bulletSpeed;
+
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +25,17 @@ public class PlayerMove : MonoBehaviour
 
             lookAtDirection = fingerPosition - target.position;
             target.right = lookAtDirection;
+
+            
+            if (fingerPlayer.phase == TouchPhase.Ended) {
+                Debug.Log("FIREEE!!");
+                var bullet = Instantiate(bulletObj, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
+            }
+
         }
 
     }
+
+
 }
