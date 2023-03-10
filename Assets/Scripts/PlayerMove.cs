@@ -12,13 +12,11 @@ public class PlayerMove : MonoBehaviour
     public GameObject bulletObj;//var of the object that will be the bullet
     public Transform bulletSpawnPoint;// Where shoot the Bullet
     public float bulletSpeed;//The name just say everything
-    CameraFollow follow;//get the camera script
     bool isAbleToShoot;
 
 
     // Update is called once per frame
     void Start(){
-        follow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         isAbleToShoot = true;
     }
     
@@ -30,20 +28,20 @@ public class PlayerMove : MonoBehaviour
             fingerPosition = mainCamera.ScreenToWorldPoint(fingerPlayer.position);
             fingerPosition.z = 0;
 
-            lookAtDirection = fingerPosition - target.position;
-            target.right = lookAtDirection;
+            Debug.Log(fingerPosition.y);
 
+            lookAtDirection = new Vector3(0,fingerPosition.y,0) - target.position;
+            target.right = lookAtDirection;
+            
             if (fingerPlayer.phase == TouchPhase.Ended) {             
-                Debug.Log("Intentaron disparar y is able to shoot es: "+isAbleToShoot);
                 if (isAbleToShoot){
                     var bullet = Instantiate(bulletObj, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                    bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
                     bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
-                    follow.SetTarget(bullet.GetComponent<Rigidbody2D>().transform);
-                    Shoot();//Disable shoot again
-                    Invoke("Shoot",6f);
+                    Shoot();//Disable shoot
                 }
             }
-
+            
         }
 
     }
