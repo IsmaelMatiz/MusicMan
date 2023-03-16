@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 69002541}
   - component: {fileID: 69002540}
   - component: {fileID: 69002542}
+  - component: {fileID: 69002543}
   m_Layer: 0
   m_Name: fender
   m_TagString: Player
@@ -200,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69002539}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.20674372, w: 0.97839516}
   m_LocalPosition: {x: -20.05, y: -6.29, z: 0}
   m_LocalScale: {x: 3.8268363, y: 4.1374836, z: 4.482648}
   m_ConstrainProportionsScale: 0
@@ -210,7 +211,7 @@ Transform:
   - {fileID: 129252722}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.863}
 --- !u!114 &69002542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +229,24 @@ MonoBehaviour:
   bulletObj: {fileID: 750161130715332422, guid: e2435bb85c569ef4895faeb8480bf1eb, type: 3}
   bulletSpawnPoint: {fileID: 1828686216}
   bulletSpeed: 23.9
+  playerSpeed: 3
+--- !u!114 &69002543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69002539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82cead726eec7f4387e8d74b26f8461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potencia: 22
+  bulletSpawnPoint: {fileID: 69002541}
+  point: {fileID: 2314246555583279049, guid: 7136a219e1d47f54d83de08a7539d4aa, type: 3}
+  adjustAim: -0.52
+  py: {fileID: 0}
 --- !u!1 &129252721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,7 +3776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828686215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.38, y: 1.52, z: 0}
+  m_LocalPosition: {x: 1.51, y: 1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

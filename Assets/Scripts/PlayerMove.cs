@@ -12,12 +12,15 @@ public class PlayerMove : MonoBehaviour
     public GameObject bulletObj;//var of the object that will be the bullet
     public Transform bulletSpawnPoint;// Where shoot the Bullet
     public float bulletSpeed;//The name just say everything
+    private ParabollicShoot parabollic;//Control the Aim system
     bool isAbleToShoot;
 
+    public int playerSpeed;
 
     // Update is called once per frame
     void Start(){
         isAbleToShoot = true;
+        parabollic = GetComponent<ParabollicShoot>();
     }
     
     void Update()
@@ -28,16 +31,12 @@ public class PlayerMove : MonoBehaviour
             fingerPosition = mainCamera.ScreenToWorldPoint(fingerPlayer.position);
             fingerPosition.z = 0;
 
-            Debug.Log(fingerPosition.y);
-
-            lookAtDirection = new Vector3(0,fingerPosition.y,0) - target.position;
+            lookAtDirection = new Vector3(0,-fingerPosition.y*2.5f,0) -target.position ;
             target.right = lookAtDirection;
             
             if (fingerPlayer.phase == TouchPhase.Ended) {             
                 if (isAbleToShoot){
                     var bullet = Instantiate(bulletObj, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                    bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
-                    bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
                     Shoot();//Disable shoot
                 }
             }
